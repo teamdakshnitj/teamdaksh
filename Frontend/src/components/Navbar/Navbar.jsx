@@ -8,7 +8,7 @@ const Navbar = () => {
   let location=window.location.pathname;
 
   return (
-    <Flex bg="black" color="white" justify={"space-around"}>
+    <Flex bg="black" color="white" justify={"space-around"} position="fixed" zIndex={3} w="100%">
       <Box>
       <Image
         h='60px'
