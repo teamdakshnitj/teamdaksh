@@ -3,10 +3,15 @@ import { color, motion } from "framer-motion";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Box, Flex, Image, Button, IconButton, useDisclosure, Collapse, HStack } from "@chakra-ui/react";
 import logo from "../../assets/logo.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   let location=window.location.pathname;
-
+  let navigate = useNavigate();
+  const clickAbout = () => {
+    navigate(about);
+  }
+   
   return (
     <Flex bg="black" color="white" justify={"space-around"} position="fixed" zIndex={3} w="100%">
       <Box>
@@ -21,10 +26,10 @@ const Navbar = () => {
         <Box px="7px" _hover={{color:"red"}} border={location === "/" ? "2px solid red":"none"} borderRadius={location === "/" ? "30px":"none"}>
           HOME
         </Box>
-        <Box px="7px" _hover={{color:"red"}} border={location === "/about" ? "2px solid red":"none"} borderRadius={location === "/about" ? "30px":"none"}>
+        <Box px="7px" _hover={{color:"red"}} onClick={clickAbout} border={location === "/about" ? "2px solid red":"none"} borderRadius={location === "/about" ? "30px":"none"}>
           ABOUT US 
         </Box>
-        <Box px="7px" _hover={{color:"red"}} border={location === "/achievement" ? "2px solid red":"none"} borderRadius={location === "/achievement" ? "30px":"none"}>
+        <Box px="7px" _hover={{color:"red"}} border={location === "/achievements" ? "2px solid red":"none"} borderRadius={location === "/achievements" ? "30px":"none"}>
           ACHIEVEMENTS
         </Box>
         <Box px="7px" _hover={{color:"red"}} border={location === "/gallery" ? "2px solid red":"none"} borderRadius={location === "/gallery" ? "30px":"none"}>
