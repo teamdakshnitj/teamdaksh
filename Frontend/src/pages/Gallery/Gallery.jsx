@@ -21,13 +21,19 @@ function Gallery() {
   const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11];
 
   return (
-    <VStack bgColor="black" p="8vh" color="white">
-      <HStack fontSize="32px" fontWeight="bold">
+    <VStack bgColor="black" p={{ base: '4vh', md: '8vh' }} color="white">
+      <HStack fontSize={{ base: '24px', md: '32px' }} fontWeight="bold">
         <Text>Our</Text>
         <Text color="red">Memories</Text>
       </HStack>
       <Grid
-        templateColumns="repeat(5, 1fr)"
+        templateColumns={{
+          base: 'repeat(2, 1fr)',
+          sm: 'repeat(3, 1fr)',
+          md: 'repeat(4, 1fr)',
+          lg: 'repeat(5, 1fr)',
+        }}
+        gap={4}
         p={4}
         justifyItems="center"
         alignItems="center"
@@ -36,8 +42,8 @@ function Gallery() {
         {images.map((src, index) => (
           <Box
             key={index}
-            width={hoveredIndex === index ? 'auto' : '240px'}
-            height={hoveredIndex === index ? 'auto' : '240px'}
+            width={hoveredIndex === index ? 'auto' : { base: '120px', md: '180px', lg: '240px' }}
+            height={hoveredIndex === index ? 'auto' : { base: '120px', md: '180px', lg: '240px' }}
             overflow="hidden"
             position="relative"
             cursor="pointer"
@@ -48,7 +54,7 @@ function Gallery() {
             <Image
               src={src}
               alt={`Image ${index + 1}`}
-              boxSize={hoveredIndex === index ? 'auto' : '240px'}
+              boxSize={hoveredIndex === index ? 'auto' : { base: '120px', md: '180px', lg: '240px' }}
               objectFit="cover"
               transition="all 0.3s ease"
             />
