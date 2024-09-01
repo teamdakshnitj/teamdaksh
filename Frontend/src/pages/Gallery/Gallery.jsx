@@ -21,17 +21,16 @@ function Gallery() {
   const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11];
 
   return (
-    <VStack bgColor="black" p={{ base: '4vh', md: '8vh' }} color="white">
+    <VStack bgColor="black" p={{ base: '4vh', md: '8vh' }} color="white" mt="8vh">
       <HStack fontSize={{ base: '24px', md: '32px' }} fontWeight="bold">
         <Text>Our</Text>
         <Text color="red">Memories</Text>
       </HStack>
       <Grid
         templateColumns={{
-          base: 'repeat(2, 1fr)',
-          sm: 'repeat(3, 1fr)',
-          md: 'repeat(4, 1fr)',
-          lg: 'repeat(5, 1fr)',
+          base: 'repeat(1, 1fr)', // 1 card on phone-sized screens
+          md: 'repeat(4, 1fr)',   // 2 cards on tablet-sized screens
+          lg: 'repeat(5, 1fr)',   // 3 cards on larger screens
         }}
         gap={4}
         p={4}
