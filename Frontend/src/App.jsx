@@ -12,6 +12,7 @@ import RootLayout from './layouts/RootLayout';
 import About from './pages/About/About';
 import Achievements from './pages/Achievements/Achievements';
 import Gallery from './pages/Gallery/Gallery';
+import OurTeam from './pages/Our Team/Team';
 
 // router and routes
 const router = createBrowserRouter(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
       <Route path="about" element={<About/>}/>
       <Route path="achievements" element={<Achievements/>}/>
       <Route path="gallery" element={<Gallery/>}/>
+      <Route path="team" element={<OurTeam/>}/>
     </Route>
   )
 )
