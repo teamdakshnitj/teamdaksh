@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Flex, Image, Button, Text, HStack, VStack, Icon, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Flex, Image, Button, Text, HStack, VStack, Icon, useBreakpointValue, Link } from "@chakra-ui/react";
 import logo from "../../assets/logo.jpg";
 import { GoLocation } from "react-icons/go";
 import { FaPhoneAlt, FaFacebook } from "react-icons/fa";
@@ -10,25 +10,11 @@ import { FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   const navigate = useNavigate();
-  
-  const clickHome = () => {
-    navigate("/");
-  };
-  
-  const clickAbout = () => {
-    navigate("/about");
-  };
-  
-  const clickAchievement = () => {
-    navigate("/achievements");
-  };
-  
-  const clickTeam = () => {
-    navigate("/team");
-  };
-  
-  const clickcontact = () => {
-    navigate("/contact");
+
+  // Scroll to the top after navigating
+  const handleNavigate = (path) => {
+    navigate(path);
+    window.scrollTo(0, 0);  // Scroll to the top after redirect
   };
 
   // Adjust the font size based on screen size
@@ -60,15 +46,19 @@ const Footer = () => {
               justify={{ base: "center", md: "left" }} // Center on smaller screens
               _hover={{ cursor: "pointer" }}
             >
-              <Text onClick={clickHome}>Home</Text>
+              <Text onClick={() => handleNavigate("/")}>Home</Text>
               <Text>|</Text>
-              <Text onClick={clickAbout}>About</Text>
+              <Text onClick={() => handleNavigate("/about")}>About Us</Text>
               <Text>|</Text>
-              <Text onClick={clickTeam}>Team</Text>
+              <Text onClick={() => handleNavigate("/achievements")}>Achievements</Text>
               <Text>|</Text>
-              <Text onClick={clickAchievement}>Achievements</Text>
+              <Text onClick={() => handleNavigate("/gallery")}>Gallery</Text>
               <Text>|</Text>
-              <Text onClick={clickcontact}>Contact us</Text>
+              <Text onClick={() => handleNavigate("/team")}>Our Team</Text>
+              <Text>|</Text>
+              <Text onClick={() => handleNavigate("/sponsor")}>Sponsor Us</Text>
+              <Text>|</Text>
+              <Text onClick={() => handleNavigate("/contact")}>Contact Us</Text>
             </HStack>
           </VStack>
 
@@ -86,18 +76,34 @@ const Footer = () => {
             </HStack>
             <HStack justify="left" w="100%">
               <Box><Icon as={FaPhoneAlt} color={"red"} w={6} h={6} /></Box>
-              <Box><Text>+91-1234567890</Text></Box>
+              <Box><Text>+91 6378526106</Text></Box>
             </HStack>
             <HStack justify="left" w="100%">
               <Box><Icon as={IoMail} color={"red"} w={6} h={6} /></Box>
-              <Box><Text>abc@gmail.com</Text></Box>
+              <Box>
+                <Link href="mailto:teamdaksh@nitj.ac.in" color="white">
+                  teamdaksh@nitj.ac.in
+                </Link>
+              </Box>
             </HStack>
           </VStack>
         </HStack>
 
-        <HStack justify={justifyContent} fontWeight={"bold"} w="100%" flexDirection={stackDirection} spacing={spacing}>
+        <HStack
+          justify="flex-start" // Aligns all content to the left
+          fontWeight="bold"
+          w="100%"
+          spacing={2} // Small spacing between items
+          wrap="wrap" // Allows wrapping on smaller screens
+        >
           <Text>Designed By:</Text>
-          <Text color="red">Jayant Joshi, Money Goyal</Text>
+          <Link href="https://www.linkedin.com/in/jayant-joshi001/" isExternal color="red">
+            Jayant Joshi
+          </Link>
+          <Text>,</Text>
+          <Link href="https://www.linkedin.com/in/money-goyal" isExternal color="red">
+           Money Goyal
+          </Link>
         </HStack>
 
         <HStack justify={justifyContent} w="100%" my={{ base : "10px"}} flexDirection={stackDirection} spacing={spacing}>
@@ -107,9 +113,15 @@ const Footer = () => {
           </HStack>
           <Text textAlign={{ base: "center", md: "left" }}>© 2024 NIT Jalandhar — www.teamdaksh.com</Text>
           <HStack spacing={5} my={{ base : "10px"}}>
-            <Icon as={FaFacebook} w={6} h={6} />
-            <Icon as={RiInstagramFill} w={6} h={6} />
-            <Icon as={FaLinkedin} w={6} h={6} />
+            <Link href="https://www.facebook.com/TeamDaksh" isExternal>
+              <Icon as={FaFacebook} w={6} h={6} />
+            </Link>
+            <Link href="https://www.instagram.com/teamdaksh/profilecard/?igsh=MnhibWJnemQzZ292" isExternal>
+              <Icon as={RiInstagramFill} w={6} h={6} />
+            </Link>
+            <Link href="https://www.linkedin.com/company/team-daksh/" isExternal>
+              <Icon as={FaLinkedin} w={6} h={6} />
+            </Link>
           </HStack>
         </HStack>
       </VStack>
