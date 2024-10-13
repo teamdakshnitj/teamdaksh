@@ -10,8 +10,16 @@ import sponsor4 from "../../assets/sponsor4.png";
 import sponsor5 from "../../assets/sponsor5.png";
 import sponsor6 from "../../assets/sponsor6.png";
 import { Box, Button, Flex, HStack, VStack, Image, Text, keyframes } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+
+  const navigate = useNavigate();
+
+  const clickSponsor = () => {
+    navigate("/sponsor");
+  };
+
 
   const infiniteScroll = keyframes`
   from { 
@@ -63,6 +71,7 @@ const animation = `${infiniteScroll} 25s linear infinite`;
               p={{ base: "16px", md: "20px" }}
               px={{ base: "16px", md: "20px" }}
               color="white"
+              onClick={clickSponsor}
             >
               Support Us
             </Button>
