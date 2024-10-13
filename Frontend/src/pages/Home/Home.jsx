@@ -3,18 +3,80 @@ import BgImage from "../../assets/car.png"; // Your background image path
 import aboutImage from "../../assets/IMG_20220830_130731.jpg";
 import achievementImage from "../../assets/achievements.png";
 import sponsorImage from "../../assets/20190926_005344.jpg";
-import sponsor1 from "../../assets/sponsor1.png";
 import sponsor2 from "../../assets/sponsor2.png";
 import sponsor3 from "../../assets/sponsor3.png";
 import sponsor4 from "../../assets/sponsor4.png";
 import sponsor5 from "../../assets/sponsor5.png";
-import sponsor6 from "../../assets/sponsor6.png";
+import sponsor7 from "../../assets/Screenshot 2024-10-14 003547.png";
+import sponsor8 from "../../assets/wolkswagen.webp";
+import sponsor9 from "../../assets/speedyways.png";
+import sponsor10 from "../../assets/coke-cola.png";
+import sponsor11 from "../../assets/Screenshot 2024-10-14 003539.png";
+import sponsor12 from "../../assets/Screenshot 2024-10-14 003529.png";
+import sponsor13 from "../../assets/oaykay.png";
+import sponsor14 from "../../assets/jk-tyre-logo.webp";
+import sponsor15 from "../../assets/j-k-international.jpg";
+import sponsor16 from "../../assets/endico_logo.png";
 import { Box, Button, Flex, HStack, VStack, Image, Text, keyframes } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+
+const achievementsData = {
+  achievements: [
+    {
+      year: 2011,
+      event: "Shell Eco-Marathon",
+      description: ["First participation with a record mileage of 300 km/l"]
+    },
+    {
+      year: 2012,
+      event: "Shell Eco-Marathon",
+      description: ["Achieved 65 km/kWh"]
+    },
+    {
+      year: 2013,
+      event: "SAENIS Efficycle",
+      description: ["Participated and attended the main event at Chandigarh"]
+    },
+    {
+      year: 2014,
+      event: "Shell Eco-Marathon, Manila, Philippines",
+      description: ["Represented India under the Diesel Prototype category"]
+    },
+    {
+      year: 2016,
+      event: "Effi Cars, Chandigarh",
+      description: ["Secured 2nd position nationally"]
+    },
+    {
+      year: 2017,
+      event: "Effi Cars, Chandigarh",
+      description: ["Won 1st position nationally"]
+    },
+    {
+      year: 2018,
+      event: "Electric Solar Vehicle Championship (ESVC)",
+      description: ["Participated with innovation on regenerative braking"]
+    },
+    {
+      year: 2019,
+      event: "FSDC & ESVC",
+      description: [
+        "Runner-up in FSDC",
+        "Champion of Asia's biggest solar vehicle event (ESVC)"
+      ]
+    },
+    {
+      year: 2022,
+      event: "Indian Karting Race (IKR), Noida",
+      description: ["Runner-up in the endurance round"]
+    }
+  ]
+};
 
 const Home = () => {
 
   const navigate = useNavigate();
+  const sponsors = [sponsor2, sponsor3, sponsor4, sponsor5, sponsor7, sponsor8, sponsor9, sponsor10, sponsor11, sponsor12, sponsor13 ,sponsor14, sponsor15, sponsor16];
 
   const clickSponsor = () => {
     navigate("/sponsor");
@@ -138,9 +200,9 @@ const animation = `${infiniteScroll} 25s linear infinite`;
             </Text>
           </HStack>
           <Flex wrap="wrap" justifyContent="center" gap={6} w="100%">
-            {[...Array(9)].map((_, i) => (
+            {achievementsData.achievements.map((achievement, index) => (
               <VStack
-                key={i}
+                key={index}
                 border="2px solid white"
                 p={{ base: 4, md: 6 }}
                 textAlign="left"
@@ -148,11 +210,16 @@ const animation = `${infiniteScroll} 25s linear infinite`;
                 w={{ base: "90%", sm: "40%", md: "30%" }}
               >
                 <HStack textAlign="left">
-                  <Text fontWeight="bold">BAJA SAE INDIA</Text>
-                  <Text fontWeight="bold" color="red">2010:</Text>
+                  <Text fontWeight="bold">{achievement.event}</Text>
+                  <Text fontWeight="bold" color="red">
+                    {achievement.year}:
+                  </Text>
                 </HStack>
-                <Text textAlign="left">Best Engineering Design Award.</Text>
-                <Text textAlign="left">1st Position In least Emission Category.</Text>
+                {achievement.description.map((desc, i) => (
+                  <Text key={i} textAlign="left">
+                    {desc}
+                  </Text>
+                ))}
               </VStack>
             ))}
           </Flex>
@@ -194,30 +261,18 @@ const animation = `${infiniteScroll} 25s linear infinite`;
       animation={animation}
       w="200%" // Width should be sufficient to accommodate all items in a scrolling row
     >
-      {[sponsor1, sponsor2, sponsor3, sponsor4, sponsor5, sponsor6].map((sponsor, i) => (
-        <VStack 
+      {[...sponsors, ...sponsors].map((sponsor, i) => (
+        <VStack
           key={i}
           mx="100px"
-          w={{ base: "100px", md: "150px", lg: "200px" }} 
+          w={{ base: '100px', md: '150px', lg: '200px' }}
           align="center"
           flexShrink={0} // Prevent the items from shrinking
         >
-          <Image src={sponsor} alt={`Sponsor ${i + 1}`} />
+          <Image src={sponsor} alt={`Sponsor ${i % sponsors.length + 1}`} />
           <Text>Platinum Sponsor</Text>
         </VStack>
       ))}
-      {/* Duplicate the list to create a seamless scroll
-      {[sponsor1, sponsor2, sponsor3, sponsor4, sponsor5, sponsor6].map((sponsor, i) => (
-        <VStack 
-          key={i + 6} 
-          w={{ base: "100px", md: "150px", lg: "200px" }} 
-          align="center"
-          flexShrink={0}
-        >
-          <Image src={sponsor} alt={`Sponsor ${i + 7}`} />
-          <Text>Platinum Sponsor</Text>
-        </VStack>
-      ))} */}
     </Flex>
   </Flex>
           <VStack h="auto" w="100%" justify="center" alignItems="center" color="white" spacing={4}>
