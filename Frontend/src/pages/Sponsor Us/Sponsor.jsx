@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Text, VStack, Divider, List, ListItem } from "@chakra-ui/react";
+import { Box, Text, VStack, Divider, List, ListItem, Button } from "@chakra-ui/react";
+import { DownloadIcon } from "@chakra-ui/icons";
 
 const Sponsor = () => {
   return (
@@ -52,6 +53,20 @@ const Sponsor = () => {
               </Text>
             </ListItem>
           </List>
+        </Box>
+
+        {/* Download Button */}
+        <Box mt={8}>
+          <Button
+            as="a"
+            href="/project-plan.pdf"  // Link to the PDF file
+            download="project-plan.pdf"  // Suggest file name when downloading
+            colorScheme="red"
+            size="lg"
+            leftIcon={<DownloadIcon />}
+          >
+            Download Project Plan
+          </Button>
         </Box>
       </VStack>
     </Box>

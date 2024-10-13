@@ -4,7 +4,7 @@ import { FaLinkedin ,FaCode} from 'react-icons/fa';
 import img from '../../assets/car.jpg';  // Replace with the actual image if available
 import fac from '../../assets/faculty.jpg';
 import money from '../../assets/money.jpeg';
-import jayant from '../../assets/jayant.jpeg';
+import jayant from '../../assets/jayantj.jpeg';
 
 function OurTeam() {
   const coreMembers = [
@@ -234,7 +234,7 @@ function OurTeam() {
       name: 'Jayant Joshi',
       image: jayant, 
       designation: 'Developer',
-      linkedIn: 'https://www.linkedin.com/in/jayant-joshi001/',  
+      linkedIn: 'https://www.linkedin.com/in/jayant-joshi-642a79305?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BKxv4jv7dSK6LEzvwv9aO4A%3D%3D',  
     },
   ];
   
