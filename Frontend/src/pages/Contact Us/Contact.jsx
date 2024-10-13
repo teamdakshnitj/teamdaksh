@@ -1,15 +1,37 @@
-import React from "react";
-import { Box, Text, VStack, FormControl, FormLabel, Input, Textarea, Button, useToast, HStack } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Box, Text, VStack, FormControl, FormLabel, Input, Textarea, Button, useToast, HStack, Link } from "@chakra-ui/react";
 
 const Contact = () => {
   const toast = useToast();
+  
+  // State to capture form inputs
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission
+
+    // Construct the mailto link with form data
+    const mailtoLink = `mailto:teamdaksh@nitj.ac.in?subject=Contact from ${formData.name}&body=Name: ${formData.name}%0AEmail: ${formData.email}%0A%0AMessage:%0A${formData.message}`;
+    
+    // Open the mail client
+    window.location.href = mailtoLink;
+
+    // Show success toast
     toast({
-      title: "Message sent.",
-      description: "We've received your message and will get back to you shortly.",
+      title: "Message ready to send.",
+      description: "We've filled the email details for you, please check your email client.",
       status: "success",
       duration: 5000,
       isClosable: true,
@@ -42,7 +64,7 @@ const Contact = () => {
                   National Institute of Technology Jalandhar
                 </Text>
                 <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.300">
-                Grand Trunk Road, Barnala - Amritsar Bypass Rd, Jalandhar, Punjab 144011
+                  Grand Trunk Road, Barnala - Amritsar Bypass Rd, Jalandhar, Punjab 144011
                 </Text>
               </Box>
               <Box>
@@ -50,16 +72,16 @@ const Contact = () => {
                   Contact
                 </Text>
                 <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.300">
-                  Mobile: +91 
+                  Mobile: +91 6378526106
                 </Text>
               </Box>
               <Box>
                 <Text fontSize={{ base: 'lg', md: 'xl' }} fontWeight="bold" color="red.500" mb={3}>
                   Mail
                 </Text>
-                <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.300">
-                  Email: 
-                </Text>
+                <Link href="mailto:teamdaksh@nitj.ac.in" color="gray.300" fontSize={{ base: 'md', md: 'lg' }}>
+                  teamdaksh@nitj.ac.in
+                </Link>
               </Box>
             </VStack>
           </Box>
@@ -76,6 +98,8 @@ const Contact = () => {
                     bgColor="gray.800"
                     borderColor="gray.600"
                     color="white"
+                    value={formData.name}
+                    onChange={handleChange}
                   />
                 </FormControl>
                 <FormControl id="email" isRequired>
@@ -86,6 +110,8 @@ const Contact = () => {
                     bgColor="gray.800"
                     borderColor="gray.600"
                     color="white"
+                    value={formData.email}
+                    onChange={handleChange}
                   />
                 </FormControl>
                 <FormControl id="message" isRequired>
@@ -95,6 +121,8 @@ const Contact = () => {
                     bgColor="gray.800"
                     borderColor="gray.600"
                     color="white"
+                    value={formData.message}
+                    onChange={handleChange}
                   />
                 </FormControl>
                 <Button
